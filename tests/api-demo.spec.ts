@@ -12,10 +12,10 @@ test.describe('API Testing - User Management System', () => {
 
         const responseBody = await response.json();
 
-        // API này trả về một mảng (array) các users. Mình check xem mảng có dữ liệu không.
+        // API trả về một mảng (array) các users. Tui check xem mảng có dữ liệu k
         expect(responseBody.length).toBeGreaterThan(0);
         
-        // Kiểm tra user đầu tiên có các trường dữ liệu chuẩn xác không
+        // Kiểm tra user đầu tiên có các trường dữ liệu chuẩn xác k
         expect(responseBody[0]).toHaveProperty('id');
         expect(responseBody[0]).toHaveProperty('name');
         
@@ -25,9 +25,9 @@ test.describe('API Testing - User Management System', () => {
     test('POST - Tạo mới một người dùng vào hệ thống (Create)', async ({ request }) => {
         // Chuẩn bị payload data gửi lên
         const newEmployee = {
-            name: 'Lê Nhật Tùng',
+            name: 'Nguyễn Hoàng Đăng Khoa',
             job: 'Automation SDET',
-            email: 'tung.sdet@example.com'
+            email: 'khoa.sdet@example.com'
         };
 
         const response = await request.post(`${baseURL}/users`, {
@@ -39,11 +39,11 @@ test.describe('API Testing - User Management System', () => {
 
         const responseBody = await response.json();
         
-        // Assert: Xác nhận Server đã nhận và trả lại đúng data
+        // Assert: Xác nhận SV đã nhận và trả lại đúng data
         expect(responseBody.name).toBe('Lê Nhật Tùng');
         expect(responseBody.job).toBe('Automation SDET');
         
-        // Cực kỳ quan trọng: Xác nhận server có sinh ra một ID mới cho user này
+        // Qtrọng: Xác nhận SV có sinh ra một ID mới cho user này
         expect(responseBody).toHaveProperty('id');
         
         console.log('POST /users thành công! Đã tạo user mới với ID:', responseBody.id);
